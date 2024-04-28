@@ -1,0 +1,29 @@
+server:
+  port: ${SERVER_PORT:8081}
+  servlet:
+    context-path: ${SERVER_SERVLET_CONTEXT_PATH:/tech-sprint-solutions}
+
+spring:
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/tech_sprint_solutions_db}
+    username: ${DB_USER:mysql}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: ${DB_DRIVER_CLASS:com.mysql.cj.jdbc.Driver}
+    hikari:
+      connection-timeout: ${DB_TIMEOUT:30000}
+      maximum-pool-size: ${DB_MAXIMUM_POOL_SIZE:3}
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: ${DB_DIALECT:org.hibernate.dialect.MySQLDialect}
+    hibernate:
+      ddl-auto: ${DB_DDL_AUTO:update}
+    open-in-view: ${DB_OPEN_VIEW:false}
+
+  security:
+    jwt:
+      signature: ${SPRING_SECURITY_JWT_SIGNATURE:TESTE}
+
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
