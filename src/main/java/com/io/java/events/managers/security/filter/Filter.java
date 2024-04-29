@@ -1,7 +1,7 @@
 package com.io.java.events.managers.security.filter;
 
 import com.io.java.events.managers.application.utils.URLS;
-import com.io.java.events.managers.security.model.response.ErrorResponse;
+import com.io.java.events.managers.application.controller.config.ErrorResponse;
 import com.io.java.events.managers.security.util.JwtUtil;
 import jakarta.annotation.Nullable;
 import jakarta.servlet.FilterChain;
@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor
@@ -35,28 +34,22 @@ public class Filter extends OncePerRequestFilter {
                authenticate(jwt);
 
           filterChain.doFilter(request, response);
-          unauthorized(response);
+          ErrorResponse.getErrorUnauthorized(response);
         } catch (Exception e) {
-            ErrorResponse.getError(response, e);
+          ErrorResponse.getError(response, e);
         }
     }
 
     private void authenticate(String jwt) {
-
         if (jwtUtil.isValidToken(jwt)) {
             var authentication = jwtUtil.authenticate(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
     }
 
-    private void unauthorized(HttpServletResponse response) {
-        if (response.getStatus() == HttpServletResponse.SC_UNAUTHORIZED) {
-            ErrorResponse.getErrorUnauthorized(response);
-        }
-    }
-
     @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) {
+    protected boolean shouldNotFilter(@Nullable HttpServletRequest request) {
+        assert request != null;
         return URLS.getPublicRoutes().stream().anyMatch(url -> url.getName().contains(request.getServletPath()));
     }
 }

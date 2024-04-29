@@ -1,7 +1,6 @@
 package com.io.java.events.managers.application.dto.response;
 
 import com.io.java.events.managers.infrastructure.entity.EventEntity;
-import com.io.java.events.managers.infrastructure.mapper.EventMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,12 +14,12 @@ import java.util.List;
 @NoArgsConstructor
 public class EventResponseGet {
     LocalDateTime date;
-    List<ListEventsResponse> events;
+    List<EventsResponse> events;
 
-    public static EventResponseGet buildClass(LocalDateTime date, List<EventEntity> events){
+    public static EventResponseGet buildClass(LocalDateTime date, List<EventsResponse> events){
         return EventResponseGet.builder()
                 .date(date)
-                .events(EventMapper.eventEntityListToEventResponseGetList(events))
+                .events(events)
                 .build();
     }
 }

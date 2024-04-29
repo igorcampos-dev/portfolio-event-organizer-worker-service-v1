@@ -1,4 +1,4 @@
-package com.io.java.events.managers.security.model.response;
+package com.io.java.events.managers.application.controller.config;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,9 +28,11 @@ public class ErrorResponse {
     }
 
     public static void getErrorUnauthorized(HttpServletResponse response){
-        response.setStatus(HttpStatus.UNAUTHORIZED.value());
-        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        buildResponse(response, "Unauthenticated request.");
+        if (response.getStatus() == HttpServletResponse.SC_UNAUTHORIZED) {
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+            buildResponse(response, "Unauthenticated request.");
+        }
     }
 
     public static void getError(HttpServletResponse response, Exception e){

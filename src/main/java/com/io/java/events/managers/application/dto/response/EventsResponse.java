@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListEventsResponse {
+public class EventsResponse {
     private String id;
     private String eventDescription;
     private String eventName;
