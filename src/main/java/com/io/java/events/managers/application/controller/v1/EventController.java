@@ -8,7 +8,6 @@ import com.io.java.events.managers.application.dto.response.EventsResponse;
 import com.io.java.events.managers.application.utils.Objects;
 import com.io.java.events.managers.application.utils.URLS;
 import com.io.java.events.managers.domain.service.EventService;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @RestController
-
 @RequiredArgsConstructor
 @SuppressWarnings("unused")
 @RequestMapping(value = URLS.EVENT_PATH, produces = MediaType.APPLICATION_JSON_VALUE)

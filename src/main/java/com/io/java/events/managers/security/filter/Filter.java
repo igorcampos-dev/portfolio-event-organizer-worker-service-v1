@@ -1,7 +1,7 @@
 package com.io.java.events.managers.security.filter;
 
 import com.io.java.events.managers.application.utils.URLS;
-import com.io.java.events.managers.application.controller.config.ErrorResponse;
+import com.io.java.events.managers.application.controller.config.exception.ErrorResponse;
 import com.io.java.events.managers.security.util.JwtUtil;
 import jakarta.annotation.Nullable;
 import jakarta.servlet.FilterChain;
