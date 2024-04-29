@@ -12,6 +12,7 @@ import com.io.java.events.managers.infrastructure.entity.EventEntity;
 import com.io.java.events.managers.infrastructure.mapper.EventOperationMapper;
 import com.io.java.events.managers.infrastructure.repository.EventRepository;
 import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -67,7 +68,6 @@ public class EventAdapter implements EventPersistence {
 
     @Override
     public EventResponseGet getEventByDate(LocalDateTime date) {
-
         List<EventEntity> eventsCache = cacheList.getIfPresent(date);
 
         if (eventsCache != null)
@@ -77,4 +77,5 @@ public class EventAdapter implements EventPersistence {
         cacheList.put(date, events);
         return EventResponseGet.buildClass(date, eventOperationMapper.toResponseListOrElseThrow(events));
     }
+
 }
