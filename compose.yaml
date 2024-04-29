@@ -6,7 +6,7 @@ services:
       - 80:80
     environment:
       SERVER_PORT: 80
-      DB_URL: jdbc:mysql://database:3306/tech_sprint_solutions_db
+      DB_URL: jdbc:mysql://database:3306/tech_sprint_solutions_db_dev
       DB_USER: mysql
       DB_PASSWORD: password
       DB_DRIVER_CLASS: com.mysql.cj.jdbc.Driver
@@ -27,4 +27,5 @@ services:
     environment:
       MYSQL_ROOT_USER: mysql
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: tech_sprint_solutions_db
+    volumes:
+      - ./src/main/docker/create_databases.sql:/docker-entrypoint-initdb.d/init.sql

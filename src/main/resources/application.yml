@@ -6,7 +6,7 @@ server:
 spring:
 
   datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/tech_sprint_solutions_db}
+    url: ${DB_URL:jdbc:mysql://localhost:3306/tech_sprint_solutions_db_loc}
     username: ${DB_USER:mysql}
     password: ${DB_PASSWORD:password}
     driver-class-name: ${DB_DRIVER_CLASS:com.mysql.cj.jdbc.Driver}
