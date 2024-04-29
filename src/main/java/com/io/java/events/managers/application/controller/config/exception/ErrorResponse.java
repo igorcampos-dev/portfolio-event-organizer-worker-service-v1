@@ -1,4 +1,4 @@
-package com.io.java.events.managers.application.controller.config;
+package com.io.java.events.managers.application.controller.config.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;

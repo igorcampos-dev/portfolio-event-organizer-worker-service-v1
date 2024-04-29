@@ -1,4 +1,4 @@
-package com.io.java.events.managers.application.controller.config;
+package com.io.java.events.managers.application.controller.config.exception;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
