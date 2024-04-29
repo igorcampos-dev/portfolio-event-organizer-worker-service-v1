@@ -4,7 +4,7 @@ import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
 import com.io.java.events.managers.application.dto.request.EventRequestDto;
 import com.io.java.events.managers.application.dto.response.EventResponse;
 import com.io.java.events.managers.application.dto.response.EventResponseGet;
-import com.io.java.events.managers.application.dto.response.ListEventsResponse;
+import com.io.java.events.managers.application.dto.response.EventsResponse;
 import com.io.java.events.managers.application.utils.Objects;
 import com.io.java.events.managers.application.utils.URLS;
 import com.io.java.events.managers.domain.service.EventService;
@@ -18,7 +18,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -60,7 +59,7 @@ public class EventController {
            
             """)
     @GetMapping("/name")
-    public ResponseEntity<ListEventsResponse> getEventByName(@RequestHeader("name") String name) {
+    public ResponseEntity<EventsResponse> getEventByName(@RequestHeader("name") String name) {
         Objects.requireNonEmptyOrNull(name, "O cabeçalho name não pode ser vazio ou nulo.");
         var response = eventService.getEventByName(name);
         return ResponseEntity.status(HttpStatus.OK).body(response);

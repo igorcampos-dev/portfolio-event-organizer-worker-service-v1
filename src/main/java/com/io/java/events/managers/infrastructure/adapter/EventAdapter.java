@@ -6,10 +6,10 @@ import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
 import com.io.java.events.managers.application.dto.request.EventRequestDto;
 import com.io.java.events.managers.application.dto.response.EventResponse;
 import com.io.java.events.managers.application.dto.response.EventResponseGet;
-import com.io.java.events.managers.application.dto.response.ListEventsResponse;
+import com.io.java.events.managers.application.dto.response.EventsResponse;
 import com.io.java.events.managers.domain.persistence.EventPersistence;
 import com.io.java.events.managers.infrastructure.entity.EventEntity;
-import com.io.java.events.managers.infrastructure.mapper.EventMapper;
+import com.io.java.events.managers.infrastructure.mapper.EventOperationMapper;
 import com.io.java.events.managers.infrastructure.repository.EventRepository;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
@@ -23,9 +23,11 @@ public class EventAdapter implements EventPersistence {
     private final EventRepository eventRepository;
     private final Cache<String, EventEntity> cache;
     private final Cache<LocalDateTime, List<EventEntity>> cacheList;
+    private final EventOperationMapper eventOperationMapper;
 
-    public EventAdapter(EventRepository eventRepository) {
+    public EventAdapter(EventRepository eventRepository, EventOperationMapper eventOperationMapper) {
         this.eventRepository = eventRepository;
+        this.eventOperationMapper = eventOperationMapper;
 
         cache = Caffeine.newBuilder()
                 .expireAfterWrite(30, TimeUnit.MINUTES)
@@ -52,15 +54,15 @@ public class EventAdapter implements EventPersistence {
     }
 
     @Override
-    public ListEventsResponse getEventByName(String name) {
-        EventEntity eventEntity = cache.getIfPresent(name);
+    public EventsResponse getEventByName(String name) {
+        EventEntity eventCache = cache.getIfPresent(name);
 
-        if (eventEntity != null)
-            return EventMapper.eventEntityToEventResponseGet(eventEntity);
+        if (eventCache != null)
+            return eventOperationMapper.toResponse(eventCache);
 
-        var event =  eventRepository.findByNameOrElseThrow(name);
-        cache.put(event.getName(), event);
-        return EventMapper.eventEntityToEventResponseGet(event);
+        var eventEntity =  eventRepository.findByNameOrElseThrow(name);
+        cache.put(eventEntity.getName(), eventEntity);
+        return eventOperationMapper.toResponse(eventEntity);
     }
 
     @Override
@@ -69,10 +71,10 @@ public class EventAdapter implements EventPersistence {
         List<EventEntity> eventsCache = cacheList.getIfPresent(date);
 
         if (eventsCache != null)
-            return EventResponseGet.buildClass(date, eventsCache);
+            return EventResponseGet.buildClass(date, eventOperationMapper.toResponseListOrElseThrow(eventsCache));
 
         var events = eventRepository.findByDateOrElseThrow(date);
         cacheList.put(date, events);
-        return EventResponseGet.buildClass(date, events);
+        return EventResponseGet.buildClass(date, eventOperationMapper.toResponseListOrElseThrow(events));
     }
 }
