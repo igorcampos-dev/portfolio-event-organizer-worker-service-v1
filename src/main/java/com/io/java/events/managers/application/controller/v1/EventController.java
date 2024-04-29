@@ -4,6 +4,7 @@ import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
 import com.io.java.events.managers.application.dto.request.EventRequestDto;
 import com.io.java.events.managers.application.dto.response.EventResponse;
 import com.io.java.events.managers.application.dto.response.EventResponseGet;
+import com.io.java.events.managers.application.dto.response.ListEventsResponse;
 import com.io.java.events.managers.application.utils.Objects;
 import com.io.java.events.managers.application.utils.URLS;
 import com.io.java.events.managers.domain.service.EventService;
@@ -59,7 +60,7 @@ public class EventController {
            
             """)
     @GetMapping("/name")
-    public ResponseEntity<EventResponseGet> getEventByName(@RequestHeader("name") String name) {
+    public ResponseEntity<ListEventsResponse> getEventByName(@RequestHeader("name") String name) {
         Objects.requireNonEmptyOrNull(name, "O cabeçalho name não pode ser vazio ou nulo.");
         var response = eventService.getEventByName(name);
         return ResponseEntity.status(HttpStatus.OK).body(response);
@@ -72,7 +73,7 @@ public class EventController {
            
             """)
     @GetMapping("/date")
-    public ResponseEntity<List<EventResponseGet>> getEventByDate(@RequestHeader("date") String date){
+    public ResponseEntity<EventResponseGet> getEventByDate(@RequestHeader("date") String date){
         Objects.requireNonEmptyOrNull(date, "O cabeçalho name não pode ser vazio ou nulo.");
         LocalDateTime newDate = Objects.validateFormattedData(date);
         var response = eventService.getEventByDate(newDate);

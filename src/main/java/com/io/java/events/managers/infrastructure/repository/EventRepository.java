@@ -1,6 +1,7 @@
 package com.io.java.events.managers.infrastructure.repository;
 
 import com.io.java.events.managers.infrastructure.entity.EventEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.LocalDateTime;
@@ -26,6 +27,7 @@ public interface EventRepository extends JpaRepository<EventEntity, String> {
         return this.findByDate(date).orElseThrow(() -> new NullPointerException("Evento não encontrado com essa data: " + date));
     }
 
+    @Transactional
     default void saveOrElseThrow(EventEntity eventEntity){
        this.ifEventExistsByNameThrow(eventEntity.getName());
        this.save(eventEntity);
@@ -35,6 +37,7 @@ public interface EventRepository extends JpaRepository<EventEntity, String> {
         return this.findById(id).orElseThrow(() -> new NullPointerException("Evento não encontrado com o id: " + id));
     }
 
+    @Transactional
     default void  updateEventOrElseThrow(EventEntity eventEntity){
         EventEntity entity = this.findByIdOrElseThrow(eventEntity.getId());
         entity.setDate(eventEntity.getDate());

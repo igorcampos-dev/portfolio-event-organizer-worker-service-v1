@@ -4,6 +4,7 @@ import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
 import com.io.java.events.managers.application.dto.request.EventRequestDto;
 import com.io.java.events.managers.application.dto.response.EventResponse;
 import com.io.java.events.managers.application.dto.response.EventResponseGet;
+import com.io.java.events.managers.application.dto.response.ListEventsResponse;
 import com.io.java.events.managers.domain.persistence.EventPersistence;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,12 +28,12 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public EventResponseGet getEventByName(String name) {
+    public ListEventsResponse getEventByName(String name) {
         return eventPersistence.getEventByName(name);
     }
 
     @Override
-    public List<EventResponseGet> getEventByDate(LocalDateTime date) {
+    public EventResponseGet getEventByDate(LocalDateTime date) {
         return eventPersistence.getEventByDate(date);
     }
 }
