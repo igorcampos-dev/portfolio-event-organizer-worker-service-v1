@@ -1,4 +1,4 @@
-package com.io.java.events.managers.security.model.response;
+package com.io.java.events.managers.application.controller.config;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;

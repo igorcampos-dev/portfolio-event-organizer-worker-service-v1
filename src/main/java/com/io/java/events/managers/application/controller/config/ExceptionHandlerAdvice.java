@@ -1,6 +1,5 @@
-package com.io.java.events.managers.security.handler;
+package com.io.java.events.managers.application.controller.config;
 
-import com.io.java.events.managers.security.model.response.ErrorResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +7,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,6 +64,12 @@ public class ExceptionHandlerAdvice {
     public ErrorResponse methodDateTimeParseException(DateTimeParseException ex) {
         String message = "A data passada está inválida, use o formato: ({ano}-{mes}-{dia}T{minutos}:{segundos}) , ex: 2024-04-27T15:30";
         return new ErrorResponse(message);
+    }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ErrorResponse methodHttpRequestMethodNotSupportedException() {
+        return new ErrorResponse("Requisição não suportada pela rota.");
     }
 
 }
