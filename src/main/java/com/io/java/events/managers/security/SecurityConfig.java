@@ -34,7 +34,7 @@ public class SecurityConfig {
     @SneakyThrows(Exception.class)
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity){
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
-                    .authorizeHttpRequests(request ->{
+                    .authorizeHttpRequests(request -> {
                        URLS.getRhRoutes().forEach( URL -> request.requestMatchers(URL.getHttpMethod(), URL.getName()).hasRole("RH"));
                        URLS.getPublicRoutes().forEach( URL -> request.requestMatchers(URL.getHttpMethod(), URL.getName()).permitAll());
                        request.anyRequest().authenticated();
