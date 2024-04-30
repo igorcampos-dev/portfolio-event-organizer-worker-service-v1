@@ -1,6 +1,5 @@
 package com.io.java.events.managers.application.dto.response;
 
-import com.io.java.events.managers.infrastructure.entity.EventEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

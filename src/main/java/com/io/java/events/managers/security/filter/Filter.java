@@ -47,9 +47,11 @@ public class Filter extends OncePerRequestFilter {
         }
     }
 
-    @Override
+   /* @Override
     protected boolean shouldNotFilter(@Nullable HttpServletRequest request) {
         assert request != null;
         return URLS.getPublicRoutes().stream().anyMatch(url -> url.getName().contains(request.getServletPath()));
     }
+
+    */
 }

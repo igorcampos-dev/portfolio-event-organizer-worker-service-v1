@@ -29,8 +29,9 @@ public class EventController {
 
     private final EventService eventService;
 
+    @SecurityRequirement(name = "Bearer Authentication")
     @ApiResponse(description = "Salva um evento", responseCode = "201")
-    @Operation(security = @SecurityRequirement(name = "bearerAuth"), summary = "Salva um evento no banco de dados", description = """
+    @Operation(summary = "Salva um evento no banco de dados", description = """
             # Envia um evento pelo corpo da mensagem e adicionamos ele no banco de dados
             ---
            
@@ -41,8 +42,9 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @SecurityRequirement(name = "Bearer Authentication")
     @ApiResponse(description = "Atualiza um evento", responseCode = "200")
-    @Operation(security = @SecurityRequirement(name = "bearerAuth"), summary = "Atualiza um evento no banco de dados", description = """
+    @Operation(summary = "Atualiza um evento no banco de dados", description = """
             # Envia um evento pelo corpo da mensagem e atualiza o mesmo no banco de dados
             ---
            
@@ -53,8 +55,9 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @SecurityRequirement(name = "Bearer Authentication")
     @ApiResponse(description = "Busca um evento pelo nome", responseCode = "200")
-    @Operation(security = @SecurityRequirement(name = "bearerAuth"), summary = "Busca um evento pelo nome do banco de dados", description = """
+    @Operation(summary = "Busca um evento pelo nome do banco de dados", description = """
             # Enviamos por parametro um nome que é um nome de um evento salvo no banco  e retornamos os seus dados.
             ---
            
@@ -66,8 +69,9 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @SecurityRequirement(name = "Bearer Authentication")
     @ApiResponse(description = "Busca evento(s) por uma data", responseCode = "200")
-    @Operation(security = @SecurityRequirement(name = "bearerAuth"), summary = "Busca evento(s) por uma data no banco de dados", description = """
+    @Operation(summary = "Busca evento(s) por uma data no banco de dados", description = """
             # Enviamos por parametro a data que é a data de um evento salvo no banco  e retornamos os seus dados.
             ---
            
