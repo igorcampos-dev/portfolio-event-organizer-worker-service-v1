@@ -14,12 +14,14 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @SuppressWarnings("unused")
@@ -38,7 +40,9 @@ public class EventController {
             """)
     @PostMapping
     public ResponseEntity<EventResponse> saveEvent(@RequestBody @Valid EventRequestDto eventRequestDto){
+        log.info("iniciando o processo de salvar um evento...");
         var response = eventService.saveEvent(eventRequestDto);
+        log.info("processo de salvar evento finalizado com sucesso");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -51,7 +55,9 @@ public class EventController {
             """)
     @PutMapping
     public ResponseEntity<EventResponse> updateEvent(@RequestBody @Valid EventPutRequestDto eventRequestDto){
+        log.info("iniciando processo de atualização de um evento...");
         var response = eventService.updateEvent(eventRequestDto);
+        log.info("processo de atualização finalizado com sucesso");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
@@ -65,7 +71,9 @@ public class EventController {
     @GetMapping("/name")
     public ResponseEntity<EventsResponse> getEventByName(@RequestHeader("name") String name) {
         Objects.requireNonEmptyOrNull(name, "O cabeçalho name não pode ser vazio ou nulo.");
+        log.info("inicindo o processo de busca de um evento por nome...");
         var response = eventService.getEventByName(name);
+        log.info("processo de busca por nome finalizado com sucesso");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
@@ -79,8 +87,10 @@ public class EventController {
     @GetMapping("/date")
     public ResponseEntity<EventResponseGet> getEventByDate(@RequestHeader("date") String date){
         Objects.requireNonEmptyOrNull(date, "O cabeçalho name não pode ser vazio ou nulo.");
+        log.info("iniciando processo de busca de um evento/eventos por data...");
         LocalDateTime newDate = Objects.validateFormattedData(date);
         var response = eventService.getEventByDate(newDate);
+        log.info("processo de busca de evento/eventos por data finalizado com sucesso");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

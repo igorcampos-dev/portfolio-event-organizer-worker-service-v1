@@ -23,15 +23,12 @@ public class UsersExamplesComponent implements CommandLineRunner {
        this.saveUser(userRh());
     }
 
-
-
     private void saveUser(UsersEntity usersEntity){
         if (userRepository.findByEmail(usersEntity.getEmail()).isEmpty()){
             userRepository.save(usersEntity);
             log.info("usuário de exemplo criado: {} , acesse a classe: {} para ter acesso as senhas de exemplo.", usersEntity.getEmail(), UsersExamplesComponent.class.getName());
         }
     }
-
 
     private UsersEntity user(){
         return UsersEntity.builder()

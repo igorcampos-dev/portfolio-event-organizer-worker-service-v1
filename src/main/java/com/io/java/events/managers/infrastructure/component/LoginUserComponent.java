@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class LoadUserComponent implements UserDetailsService {
+public class LoginUserComponent implements UserDetailsService {
 
     private final UserRepository userRepository;
 

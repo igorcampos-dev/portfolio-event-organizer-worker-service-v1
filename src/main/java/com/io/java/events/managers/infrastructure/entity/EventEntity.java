@@ -1,13 +1,12 @@
 package com.io.java.events.managers.infrastructure.entity;
 
-import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
-import com.io.java.events.managers.application.dto.request.EventRequestDto;
 import com.io.java.events.managers.application.dto.request.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 import java.time.LocalDateTime;
 
 @Data
@@ -15,47 +14,34 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "event_entity", indexes = {
-        @Index(name = "id_idx", columnList = "id", unique = true),
-        @Index(name = "name_idx", columnList = "name", unique = true),
-        @Index(name = "date_idx", columnList = "date"),
+@Table(name = "TB_EVENT", indexes = {
+        @Index(name = "IDX_ID", columnList = "PK_ID", unique = true),
+        @Index(name = "IDX_NAME", columnList = "EVT_ST_NAME", unique = true),
+        @Index(name = "IDX_DATE", columnList = "EVT_DT_DATE"),
 })
 public class EventEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", unique = true)
+    @Column(name = "PK_ID", unique = true)
+    @Comment("Id único de um evento")
     private String id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "EVT_ST_NAME", unique = true)
+    @Comment("Nome de um evento")
     private String name;
 
-    @Column(name = "date")
+    @Column(name = "EVT_DT_DATE")
+    @Comment("Data do evento")
     private LocalDateTime date;
 
-    @Column(name = "description")
+    @Column(name = "EVT_ST_DESCRIPTION")
+    @Comment("Descrição do evento")
     private String description;
 
+    @Column(name = "EVT_ST_STATUS")
     @Enumerated(EnumType.STRING)
+    @Comment("Status do evento")
     private Status status;
 
-
-    public static EventEntity buildClass(EventPutRequestDto eventRequestDto){
-        return EventEntity.builder()
-                .id(eventRequestDto.id())
-                .date(eventRequestDto.eventData())
-                .status(eventRequestDto.status())
-                .description(eventRequestDto.eventDescription())
-                .name(eventRequestDto.eventName())
-                .build();
-    }
-
-    public static EventEntity buildClassWithoutId(EventRequestDto eventRequestDto){
-       return EventEntity.builder()
-                .date(eventRequestDto.eventData())
-                .status(eventRequestDto.status())
-                .description(eventRequestDto.eventDescription())
-                .name(eventRequestDto.eventName())
-                .build();
-    }
 }

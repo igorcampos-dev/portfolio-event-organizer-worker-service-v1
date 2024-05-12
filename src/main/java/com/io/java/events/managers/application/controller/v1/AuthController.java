@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @SuppressWarnings("unused")
@@ -34,7 +36,9 @@ public class AuthController {
             """)
     @PostMapping(value = URLS.AUTH_LOGIN)
     public ResponseEntity<UserResponse> loginUser(@RequestBody @Valid UserRequestDto userRequestDto){
+         log.info("iniciando o processo de login do usuário...");
          var jwt = userService.loginUser(userRequestDto);
+         log.info("processo de login do usuário finalizado com sucesso");
          return ResponseEntity.status(HttpStatus.OK).body(jwt);
     }
 

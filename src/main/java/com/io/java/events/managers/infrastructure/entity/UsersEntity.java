@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,27 +19,33 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_entity", indexes = {
-        @Index(name = "id_idx", columnList = "id", unique = true),
-        @Index(name = "name_idx", columnList = "name", unique = true)
+@Table(name = "TB_USER", indexes = {
+        @Index(name = "IDX_ID", columnList = "PK_ID", unique = true),
+        @Index(name = "IDX_NAME", columnList = "USR_ST_NAME", unique = true)
 })
 public class UsersEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "PK_ID")
+    @Comment("Id único do usuário")
     private Long id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "USR_ST_NAME", unique = true)
+    @Comment("Nome do usuário")
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "USR_ST_EMAIL")
+    @Comment("Email do usuário")
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "USR_ST_PASSWORD")
+    @Comment("Senha do usuário")
     private String password;
 
-    @Column(name = "role")
+    @Column(name = "USR_ST_ROLE")
     @Enumerated(EnumType.STRING)
+    @Comment("Role do usuário")
     private Role role;
 
     @Override
@@ -61,7 +68,6 @@ public class UsersEntity implements UserDetails {
 
         return authorities;
     }
-
 
     @Override
     public String getUsername() {
