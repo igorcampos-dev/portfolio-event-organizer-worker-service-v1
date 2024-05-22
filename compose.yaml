@@ -17,6 +17,7 @@ services:
       SPRING_SECURITY_JWT_SIGNATURE: CCgbVvfCkAx884yCIadHEOSiO3wOw3AY1OCFvXgwD2TNTxDgTuXi3OrDaH4rzEGS0J6gynpO8K13nT70pbAaDGQdhEOk8G6JRtdz
       SPRING_PROFILES_ACTIVE: dev
       SERVER_SERVLET_CONTEXT_PATH: /tech-sprint-solutions
+      SPRING_DOC_ACTUATOR: true
 
   database:
     container_name: database
