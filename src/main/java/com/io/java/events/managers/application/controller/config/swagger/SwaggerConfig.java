@@ -29,4 +29,5 @@ import org.springframework.context.annotation.Configuration;
         scheme = "bearer",
         bearerFormat = "JWT"
 )
+@SuppressWarnings("unused")
 public class SwaggerConfig {}
