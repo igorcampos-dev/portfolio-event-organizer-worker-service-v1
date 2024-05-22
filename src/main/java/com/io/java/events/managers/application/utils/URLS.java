@@ -43,7 +43,10 @@ public class URLS {
                 new URLS("/v3/api-docs/swagger-config", HttpMethod.GET),
                 new URLS("/swagger-ui/favicon-16x16.png", HttpMethod.GET),
                 new URLS("/swagger-ui/index.css", HttpMethod.GET),
-                new URLS("/swagger-ui/index.html", HttpMethod.GET)
+                new URLS("/swagger-ui/index.html", HttpMethod.GET),
+                new URLS("/actuator", HttpMethod.GET),
+                new URLS("/actuator/health", HttpMethod.GET),
+                new URLS("/actuator/health/**", HttpMethod.GET)
         );
     }
 }

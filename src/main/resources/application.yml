@@ -3,6 +3,9 @@ server:
   servlet:
     context-path: ${SERVER_SERVLET_CONTEXT_PATH:/tech-sprint-solutions}
 
+springdoc:
+  show-actuator: ${SPRING_DOC_ACTUATOR:true}
+
 spring:
 
   datasource:
