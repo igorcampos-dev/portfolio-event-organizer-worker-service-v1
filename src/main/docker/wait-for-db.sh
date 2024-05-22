@@ -20,13 +20,13 @@ wait_for_service() {
     local host="$1"
     local port="$2"
     until nc -z "$host" "$port"; do
-        >&2 echo -e "${C_CYAN}bash${C_RESET} ${C_PURPLE}$(date +'%H:%M:%S')${C_RESET} ${C_GREEN}INFO${C_RESET} ==> Aguardando $host:$port ficar disponível..."
+        >&2 echo "${C_CYAN}bash${C_RESET} ${C_PURPLE}$(date +'%H:%M:%S')${C_RESET} ${C_GREEN}INFO${C_RESET} ==> Aguardando $host:$port ficar disponível..."
         sleep 6
     done
-    >&2 echo -e "${C_CYAN}bash${C_RESET} ${C_PURPLE}$(date +'%H:%M:%S')${C_RESET} ${C_GREEN}INFO${C_RESET} ==> $host:$port está pronto!"
+    >&2 echo "${C_CYAN}bash${C_RESET} ${C_PURPLE}$(date +'%H:%M:%S')${C_RESET} ${C_GREEN}INFO${C_RESET} ==> $host:$port está pronto!"
 }
 
 wait_for_service "$mysql_host" "$mysql_port"
 
->&2 echo -e "${C_CYAN}bash${C_RESET} ${C_PURPLE}$(date +'%H:%M:%S')${C_RESET} ${C_GREEN}INFO${C_RESET} ==> Serviços disponíveis! Iniciando a API..."
+>&2 echo "${C_CYAN}bash${C_RESET} ${C_PURPLE}$(date +'%H:%M:%S')${C_RESET} ${C_GREEN}INFO${C_RESET} ==> Serviços disponíveis! Iniciando a API..."
 exec $cmd

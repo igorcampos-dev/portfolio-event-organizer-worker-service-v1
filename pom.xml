@@ -93,6 +93,12 @@
 			<version>${caffeine.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
+
 		<!-- Tests Dependency -->
 
 		<dependency>
@@ -108,13 +114,6 @@
 			<version>${spring.security.base.version}</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>${mapstruct.version}</version>
-		</dependency>
-
 
 	</dependencies>
 
