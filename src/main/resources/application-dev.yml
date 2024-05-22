@@ -15,9 +15,6 @@ spring:
       maximum-pool-size: ${DB_MAXIMUM_POOL_SIZE}
 
   jpa:
-    properties:
-      hibernate:
-        dialect: ${DB_DIALECT}
     hibernate:
       ddl-auto: ${DB_DDL_AUTO}
     open-in-view: ${DB_OPEN_VIEW}
