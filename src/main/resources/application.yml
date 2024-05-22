@@ -15,9 +15,6 @@ spring:
       maximum-pool-size: ${DB_MAXIMUM_POOL_SIZE:3}
 
   jpa:
-    properties:
-      hibernate:
-        dialect: ${DB_DIALECT:org.hibernate.dialect.MySQLDialect}
     hibernate:
       ddl-auto: ${DB_DDL_AUTO:update}
     open-in-view: ${DB_OPEN_VIEW:false}
@@ -27,3 +24,16 @@ spring:
       signature: ${SPRING_SECURITY_JWT_SIGNATURE:TESTE}
 
   autoconfigure.exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+
+logging:
+  level:
+    org.apache.catalina.core: WARN
+    org.springframework.security.web: WARN
+    com.zaxxer.hikari: WARN
+    org.springframework.data.repository.config.RepositoryConfigurationDelegate: WARN
+    org.hibernate: WARN
+    org.hibernate.jpa.internal.util: WARN
+    org.springframework.orm.jpa.persistenceunit: WARN
+    org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean: WARN
+    org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext: WARN
+

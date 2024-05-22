@@ -27,3 +27,15 @@ spring:
       signature: ${SPRING_SECURITY_JWT_SIGNATURE}
 
   autoconfigure.exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+
+logging:
+  level:
+    org.apache.catalina.core: WARN
+    org.springframework.security.web: WARN
+    com.zaxxer.hikari: WARN
+    org.springframework.data.repository.config.RepositoryConfigurationDelegate: WARN
+    org.hibernate: WARN
+    org.hibernate.jpa.internal.util: WARN
+    org.springframework.orm.jpa.persistenceunit: WARN
+    org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean: WARN
+    org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext: WARN
