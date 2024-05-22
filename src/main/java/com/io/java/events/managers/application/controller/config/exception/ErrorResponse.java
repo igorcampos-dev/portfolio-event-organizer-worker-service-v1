@@ -3,6 +3,7 @@ package com.io.java.events.managers.application.controller.config.exception;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +19,11 @@ public class ErrorResponse {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
+    @Schema(description = "Horário em que ocorreu o erro")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime timestamp;
+
+    @Schema(description = "mensagem de erro")
     private String message;
 
     public ErrorResponse(String message) {
