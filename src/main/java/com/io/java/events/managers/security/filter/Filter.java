@@ -46,12 +46,4 @@ public class Filter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
     }
-
-   /* @Override
-    protected boolean shouldNotFilter(@Nullable HttpServletRequest request) {
-        assert request != null;
-        return URLS.getPublicRoutes().stream().anyMatch(url -> url.getName().contains(request.getServletPath()));
-    }
-
-    */
 }

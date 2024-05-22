@@ -4,10 +4,12 @@ import com.io.java.events.managers.infrastructure.entity.EventEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface EventRepository extends JpaRepository<EventEntity, String> {
 
     Optional<EventEntity> findByName(String name);

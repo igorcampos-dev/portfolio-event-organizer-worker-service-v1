@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 public class JwtUtil {
 
     @Value("${spring.security.jwt.signature}")
+    @SuppressWarnings("unused")
     private String signature;
 
     public boolean isValidToken(String jwt) {

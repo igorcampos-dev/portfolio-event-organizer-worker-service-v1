@@ -1,8 +1,9 @@
-package com.io.java.events.managers.domain.service;
+package com.io.java.events.managers.domain.service.impl;
 
 import com.io.java.events.managers.application.dto.request.UserRequestDto;
 import com.io.java.events.managers.application.dto.response.UserResponse;
 import com.io.java.events.managers.domain.persistence.UserPersistence;
+import com.io.java.events.managers.domain.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
