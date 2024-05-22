@@ -46,9 +46,5 @@ public class URLS {
                 new URLS("/swagger-ui/index.html", HttpMethod.GET)
         );
     }
-
-    public static boolean isPublic(String path) {
-        return getPublicRoutes().stream().anyMatch(url -> url.getName().contains(path));
-    }
 }
 
