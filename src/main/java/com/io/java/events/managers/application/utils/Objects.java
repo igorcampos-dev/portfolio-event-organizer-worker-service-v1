@@ -19,7 +19,7 @@ public class Objects {
         try {
             return LocalDateTime.parse(dataString, formatter);
         } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException("Formato de data inválido. O formato correto é yyyy-MM-dd'T'HH:mm");
+            throw new IllegalArgumentException("Formato de data inválido. O formato correto é yyyy-MM-dd'T'HH:mm, corriga: " + dataString);
         }
     }
 }

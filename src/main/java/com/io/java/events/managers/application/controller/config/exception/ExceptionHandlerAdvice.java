@@ -31,7 +31,7 @@ public class ExceptionHandlerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ErrorResponse handleHttpMessageNotReadableExceptions(HttpMessageNotReadableException ex) {
-        return new ErrorResponse(ex.getMessage());
+        return new ErrorResponse("Corpo de mensagem inválido, use um adequadamente");
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
