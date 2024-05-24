@@ -3,8 +3,11 @@ package com.io.java.events.managers.application.dto.request;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+
 import java.time.LocalDateTime;
 
+@Builder
 public record EventRequestDto(
 
         @NotNull(message = "O nome do evento não pode ser nulo.")

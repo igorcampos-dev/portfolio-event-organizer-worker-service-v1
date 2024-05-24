@@ -20,6 +20,6 @@ public class LoginUserComponent implements UserDetailsService {
 
     public UserDetails findByEmail(String username) {
         var user = this.userRepository.findByEmailOrElseThrow(username);
-        return new User(user.getEmail(), null , user.getAuthorities());
+        return new User(user.getEmail(), user.getPassword() , user.getAuthorities());
     }
 }
