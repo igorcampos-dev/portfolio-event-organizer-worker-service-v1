@@ -17,4 +17,5 @@ public class UserServiceImpl implements UserService {
     public UserResponse loginUser(UserRequestDto userRequestDto) {
         return userPersistence.loginUser(userRequestDto);
     }
+
 }
