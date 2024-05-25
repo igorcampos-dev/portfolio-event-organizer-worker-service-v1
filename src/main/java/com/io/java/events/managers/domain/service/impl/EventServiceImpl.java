@@ -36,4 +36,5 @@ public class EventServiceImpl implements EventService {
     public EventResponseGet getEventByDate(LocalDateTime date) {
         return eventPersistence.getEventByDate(date);
     }
+
 }
