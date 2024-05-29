@@ -1,73 +1,52 @@
-# API de Event Manager
+# API gerenciadora de eventos 👔🎉
+
+O **api.event.manager** é uma solução empresarial de backend que capacita qualquer membro do departamento de RH a gerenciar os eventos da empresa.
+
+## Pré-requisitos 💻
+
+<img src="https://img.shields.io/badge/Jdk%2017-%23ED8B00.svg?logo=openjdk&logoColor=white" />
+<img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff">
+
+## Menu 📋
+
+- [Ferramentas](#ferramentas-utilizadas-️)
+- [Portas](#portas-do-projeto)
+- [Rota do swagger](#rota-do-swagger-)
+- [Instalação](#processo-de-instalação-)
+- [Rotas](#rotas-de-para-gerenciar-eventos-)
 
 ---
 
-## Introdução
+## Ferramentas utilizadas 🛠️
 
-Este projeto foi desenvolvido por Igor de Campos com o objetivo de testar suas habilidades lógicas e experiências em
-programação.
-
----
-
-## Sobre o Projeto
-
-A API de Contra Cheques é uma solução backend empresarial que permite que qualquer funcionário do setor do RH gerencie eventos da empresa.
-
----
-
-## Processo de instalação
-
-### Implantação Local
-
-1. **Requisitos minimos:**
-    - Jdk 22
-    - Docker
-
-Siga as etapas abaixo para implantar o projeto localmente:
-
-1. Execute os seguintes comandos: :
-   ```bash
-   docker compose up -d database
-2. Aguarde até o processo de instalação do docker finalizar, depois,execute o projeto.
+<img src="https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white" /> 
+<img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff">
+<img src="https://img.shields.io/badge/Lombok-f2fcf3.svg?logo=paperlessngx&logoColor=red">
+<img src="https://img.shields.io/badge/AWS-%23FF9900.svg?logo=amazon-aws&logoColor=white">
+<img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens" style="width:48px;height:auto;border:2px solid #000;border-radius:3px;">
+<img src="https://img.shields.io/badge/Swagger-6DB33F?logo=swagger&logoColor=fff">
+<img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff">
+<img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff">
+<img src="https://img.shields.io/badge/Caffeine-010a11?logo=buymeacoffee&logoColor=fff">
+<img src="https://img.shields.io/badge/Spring%20Security-6DB33F?logo=springsecurity&logoColor=fff">
 
 ---
 
-### Implantação no Docker
-
-1. **Requisitos minimos:**
-    - Docker
-
-Siga as etapas abaixo para implantar o projeto no Docker:
-
-1. Execute:
-   ```bash
-   docker compose up
-2. Aguarde até o processo de instalação finalizar.
+## Portas do projeto 🚪
+- **Docker:** _80_
+- **Local:** _8081_
+- **Dev:** _80_
+- **Prd:** _8082_
 
 ---
 
-## Atenção!
+## Rota do Swagger 📄
 
-Todos os Curls declarados no Readme são do ambiente de dev, certifique-se de mudar a porta para a porta do ambiente adequado
-
----
-
-## Portas do projeto:
-- **docker:** 80
-- **local:** 8081
-- **dev:** 80
-- **prd:** 8082
+- **url:** `/tech-sprint-solutions/swagger-ui/index.html`
 
 ---
 
-## Rota do Swagger:
-- **url:** `/tech-sprint-solutions/swagger-ui/index.html#/`
-
----
-
-## Rotas para Funcionários
-
----
+## Rotas de para gerenciar eventos 📍📅
 
 ### `POST /tech-sprint-solutions/v1/auth/login`
 
@@ -81,10 +60,10 @@ curl --location 'http://localhost:80/tech-sprint-solutions/v1/auth/login' \
 }'
 ```
 
-Esta rota é utilizada para efetuar o login do funcionário. A existência do funcionário na empresa é verificada com base
+> Esta rota é utilizada para efetuar o login do funcionário. A existência do funcionário na empresa é verificada com base
 no seu email e senha.
 
-<br>
+---
 
 ### `POST /tech-sprint-solutions/v1/events`
 
@@ -101,9 +80,7 @@ curl --location 'http://localhost:80/tech-sprint-solutions/v1/events' \
 }'
 ```
 
-Nesta rota, Criamos um novo evento,tendo como obrigatórios os campos: eventName, eventDescription, eventData e status.
-
-<br>
+> Nesta rota, Criamos um novo evento,tendo como obrigatórios os campos: eventName, eventDescription, eventData e status.
 
 ---
 
@@ -116,9 +93,7 @@ curl --location 'http://localhost:80/tech-sprint-solutions/v1/events/date' \
 --header 'Cookie: JSESSIONID=9BBC687181840EEABDFC636AB5CE0186'
 ```
 
-Nessa rota,passamos pelo header um campo chamado: "date",nele, buscamos todos os eventos com base na data fornecida
-
-<br>
+> Nessa rota,passamos pelo header um campo chamado: "date",nele, buscamos todos os eventos com base na data fornecida
 
 ---
 
@@ -131,9 +106,7 @@ curl --location 'http://localhost:80/tech-sprint-solutions/v1/events/name' \
 --header 'Cookie: JSESSIONID=9BBC687181840EEABDFC636AB5CE0186'
 ```
 
-Nessa rota,passamos pelo header um campo chamado: "nome",nele, buscamos o evento com base no nome fornecido.
-
-<br>
+> Nessa rota,passamos pelo header um campo chamado: "nome",nele, buscamos o evento com base no nome fornecido.
 
 ---
 
@@ -153,7 +126,28 @@ curl --location --request PUT 'http://localhost:80/tech-sprint-solutions/v1/even
 }'
 ```
 
-Nessa rota,atualizamos um evento com base no body passado, tendo como obrigatórios os campos: eventName, eventDescription, eventData e status.
+> Nessa rota,atualizamos um evento com base no body passado, tendo como obrigatórios os campos: eventName, eventDescription, eventData e status.
 
-<br>
+---
 
+## Processo de instalação 🔧
+
+### Implantação Local
+
+Siga as etapas abaixo para implantar o projeto localmente:
+
+1. Execute os seguintes comandos: :
+   ```bash
+   docker compose up -d database
+2. Aguarde até o processo de instalação do docker finalizar, depois,execute o projeto.
+
+---
+
+### Implantação no Docker
+
+Siga as etapas abaixo para implantar o projeto no Docker:
+
+1. Execute:
+   ```bash
+   docker compose up
+2. Aguarde até o processo de instalação finalizar.
