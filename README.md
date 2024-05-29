@@ -18,16 +18,7 @@ O **api.event.manager** é uma solução empresarial de backend que capacita qua
 
 ## Ferramentas utilizadas 🛠️
 
-<img src="https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white" /> 
-<img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff">
-<img src="https://img.shields.io/badge/Lombok-f2fcf3.svg?logo=paperlessngx&logoColor=red">
-<img src="https://img.shields.io/badge/AWS-%23FF9900.svg?logo=amazon-aws&logoColor=white">
-<img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens" style="width:48px;height:auto;border:2px solid #000;border-radius:3px;">
-<img src="https://img.shields.io/badge/Swagger-6DB33F?logo=swagger&logoColor=fff">
-<img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff">
-<img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff">
-<img src="https://img.shields.io/badge/Caffeine-010a11?logo=buymeacoffee&logoColor=fff">
-<img src="https://img.shields.io/badge/Spring%20Security-6DB33F?logo=springsecurity&logoColor=fff">
+<img src="https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white" /> <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff"> <img src="https://img.shields.io/badge/Lombok-f2fcf3.svg?logo=paperlessngx&logoColor=red"> <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?logo=amazon-aws&logoColor=white"> <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens" style="width:48px;height:auto;border:2px solid #000;border-radius:3px;"> <img src="https://img.shields.io/badge/Swagger-6DB33F?logo=swagger&logoColor=fff"> <img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff"> <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff"> <img src="https://img.shields.io/badge/Caffeine-010a11?logo=buymeacoffee&logoColor=fff"> <img src="https://img.shields.io/badge/Spring%20Security-6DB33F?logo=springsecurity&logoColor=fff">
 
 ---
 
