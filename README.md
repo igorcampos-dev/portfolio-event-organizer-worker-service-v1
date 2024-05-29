@@ -4,8 +4,7 @@ O **api.event.manager** é uma solução empresarial de backend que capacita qua
 
 ## Pré-requisitos 💻
 
-<img src="https://img.shields.io/badge/Jdk%2017-%23ED8B00.svg?logo=openjdk&logoColor=white" />
-<img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff">
+<img src="https://img.shields.io/badge/Jdk%2017-%23ED8B00.svg?logo=openjdk&logoColor=white" /> | <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff">
 
 ## Menu 📋
 
