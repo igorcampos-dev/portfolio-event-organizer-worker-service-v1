@@ -4,23 +4,18 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.info.License;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @OpenAPIDefinition(info = @Info(
-        title = "My REST API",
-        description = "Some custom description of API.",
+        title = "Api gerenciadora de eventos",
+        description = "Esta api possui finalidade de gerenciar eventos internos da empresa",
         version = "1.0",
         contact = @Contact(
                 name = "Igor de campos",
-                email = "icampos.developer@yahoo.com",
+                email = "igorccampos8@gmail.com",
                 url = "https://igorcampos-dev.github.io/"
-        ),
-        license = @License(
-                name = "License of API",
-                url = "API license URL"
         )
 ))
 @SecurityScheme(
