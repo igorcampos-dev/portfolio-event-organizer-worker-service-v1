@@ -25,6 +25,7 @@ import java.time.format.DateTimeParseException;
 @ApiResponse(description = "Argumento do método inválido", responseCode = "400")
 @ApiResponse(description = "Argumento ilegal", responseCode = "400")
 @ApiResponse(description = "Formato de data inválido", responseCode = "400")
+@ApiResponse(description = "Requisição não suportada pela rota", responseCode = "403")
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class ExceptionHandlerAdvice {
 

@@ -51,4 +51,5 @@ public class ErrorResponse {
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.writeValue(response.getWriter() ,new ErrorResponse(message));
     }
+
 }

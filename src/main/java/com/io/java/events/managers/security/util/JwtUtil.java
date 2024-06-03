@@ -22,8 +22,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JwtUtil {
 
-    @Value("${spring.security.jwt.signature}")
     @SuppressWarnings("unused")
+    @Value("${spring.security.jwt.signature}")
     private String signature;
 
     public boolean isValidToken(String jwt) {
