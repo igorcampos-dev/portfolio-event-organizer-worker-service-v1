@@ -13,7 +13,7 @@
 	<groupId>com.io</groupId>
 	<artifactId>java.events.managers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>java.events.managers</name>
+	<name>portfolio-event-organizer-worker-service-v1</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
