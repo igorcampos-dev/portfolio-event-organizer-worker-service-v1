@@ -32,18 +32,22 @@ public class ExceptionHandlerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ErrorResponse handleHttpMessageNotReadableExceptions(HttpMessageNotReadableException ex) {
-        return new ErrorResponse("Corpo de mensagem inválido, use um adequadamente");
+        String message = "Corpo de mensagem inválido, use um adequadamente";
+        log.error("method=HttpMessageNotReadableException | message: {}", message);
+        return new ErrorResponse(message);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DuplicateKeyException.class)
     public ErrorResponse handleDuplicateKeyException(DuplicateKeyException ex) {
+        log.error("method=DuplicateKeyException | message: {}", ex.getMessage());
         return new ErrorResponse(ex.getMessage());
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NullPointerException.class)
     public ErrorResponse handleNullPointerException(NullPointerException ex) {
+        log.error("method=NullPointerException | message: {}", ex.getMessage());
         return new ErrorResponse(ex.getMessage());
     }
 
@@ -51,12 +55,14 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse methodArgumentInvalidException(MethodArgumentNotValidException ex) {
         String defaultMessage = ex.getBindingResult().getAllErrors().getFirst().getDefaultMessage();
+        log.error("method=MethodArgumentNotValidException | message: {}", defaultMessage);
         return new ErrorResponse(defaultMessage);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
     public ErrorResponse methodIllegalArgumentException(IllegalArgumentException ex) {
+        log.error("method=IllegalArgumentException | message: {}", ex.getMessage());
         return new ErrorResponse(ex.getMessage());
     }
 
@@ -64,13 +70,16 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(DateTimeParseException.class)
     public ErrorResponse methodDateTimeParseException(DateTimeParseException ex) {
         String message = "A data passada está inválida, use o formato: ({ano}-{mes}-{dia}T{minutos}:{segundos}) , ex: 2024-04-27T15:30";
+        log.error("method=DateTimeParseException | message: {}", message);
         return new ErrorResponse(message);
     }
 
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ErrorResponse methodHttpRequestMethodNotSupportedException() {
-        return new ErrorResponse("Requisição não suportada pela rota.");
+        String message = "Requisição não suportada pela rota.";
+        log.error("method=HttpRequestMethodNotSupportedException | message: {}", message);
+        return new ErrorResponse(message);
     }
 
 }
