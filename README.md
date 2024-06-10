@@ -32,7 +32,7 @@ A **api.event.manager** é uma solução empresarial de backend que capacita qua
 
 ## Menu 📋
 
-- [Portas](#portas-do-projeto)
+- [Portas](#portas-do-projeto-)
 - [Rota do swagger](#swagger-)
 - [Instalação](#processo-de-instalação-)
 - [Rotas](#rotas-de-para-gerenciar-eventos-)
