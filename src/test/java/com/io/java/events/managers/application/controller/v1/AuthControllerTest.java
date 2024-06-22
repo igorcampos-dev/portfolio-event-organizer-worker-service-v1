@@ -7,7 +7,7 @@ import com.io.java.events.managers.application.controller.v1.fixture.AuthControl
 import com.io.java.events.managers.application.utils.URLS;
 import com.io.java.events.managers.domain.service.UserService;
 import com.io.java.events.managers.security.SecurityConfig;
-import com.io.java.events.managers.security.util.JwtUtil;
+import com.io.java.events.managers.security.util.JwtUtilImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -38,7 +38,7 @@ public class AuthControllerTest {
 
     @MockBean
     @SuppressWarnings("unused")
-    private JwtUtil jwtUtil;
+    private JwtUtilImpl jwtUtil;
 
     @Test
     void shouldLogin() throws Exception {

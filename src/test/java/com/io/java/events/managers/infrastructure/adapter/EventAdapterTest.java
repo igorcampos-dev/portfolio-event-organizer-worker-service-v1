@@ -1,7 +1,6 @@
 package com.io.java.events.managers.infrastructure.adapter;
 
 import com.github.benmanes.caffeine.cache.Cache;
-import com.io.java.events.managers.application.dto.request.EventRequestDto;
 import com.io.java.events.managers.infrastructure.adapter.fixture.EventAdapterFixture;
 import com.io.java.events.managers.infrastructure.entity.EventEntity;
 import com.io.java.events.managers.infrastructure.mapper.EventOperationMapper;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 
 import java.time.LocalDateTime;
