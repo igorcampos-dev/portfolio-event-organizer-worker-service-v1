@@ -1,6 +1,5 @@
 package com.io.java.events.managers.application.controller.v1.fixture;
 
-import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
 import com.io.java.events.managers.application.dto.request.EventRequestDto;
@@ -14,9 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public class EventControllerFixture {
 
@@ -80,97 +77,4 @@ public class EventControllerFixture {
                 .events(List.of(eventGetByNameResponse()))
                 .build();
     }
-
-    public static final DecodedJWT JWT_DECODE = new DecodedJWT() {
-        @Override
-        public String getToken() {
-            return "";
-        }
-
-        @Override
-        public String getHeader() {
-            return "";
-        }
-
-        @Override
-        public String getPayload() {
-            return "";
-        }
-
-        @Override
-        public String getSignature() {
-            return "";
-        }
-
-        @Override
-        public String getAlgorithm() {
-            return "";
-        }
-
-        @Override
-        public String getType() {
-            return "";
-        }
-
-        @Override
-        public String getContentType() {
-            return "";
-        }
-
-        @Override
-        public String getKeyId() {
-            return "";
-        }
-
-        @Override
-        public Claim getHeaderClaim(String s) {
-            return null;
-        }
-
-        @Override
-        public String getIssuer() {
-            return "";
-        }
-
-        @Override
-        public String getSubject() {
-            return "";
-        }
-
-        @Override
-        public List<String> getAudience() {
-            return List.of();
-        }
-
-        @Override
-        public Date getExpiresAt() {
-            return null;
-        }
-
-        @Override
-        public Date getNotBefore() {
-            return null;
-        }
-
-        @Override
-        public Date getIssuedAt() {
-            return null;
-        }
-
-        @Override
-        public String getId() {
-            return "";
-        }
-
-        @Override
-        public Claim getClaim(String s) {
-            return null;
-        }
-
-        @Override
-        public Map<String, Claim> getClaims() {
-            return Map.of();
-        }
-    };
-
 }
