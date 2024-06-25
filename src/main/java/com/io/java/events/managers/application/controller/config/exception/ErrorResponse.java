@@ -31,14 +31,6 @@ public class ErrorResponse {
         this.message = message;
     }
 
-    public static void getErrorUnauthorized(HttpServletResponse response){
-        if (response.getStatus() == HttpServletResponse.SC_UNAUTHORIZED) {
-            response.setStatus(HttpStatus.UNAUTHORIZED.value());
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            buildResponse(response, "Unauthenticated request.");
-        }
-    }
-
     public static void getError(HttpServletResponse response, Exception e){
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
