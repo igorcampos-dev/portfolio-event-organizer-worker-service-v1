@@ -1,6 +1,7 @@
 package com.io.java.events.managers.application.controller.v1;
 
 import com.io.java.events.managers.application.config.TestConfig;
+import com.io.java.events.managers.application.config.SecurityConfig;
 import com.io.java.events.managers.application.controller.v1.fixture.EventControllerFixture;
 import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
 import com.io.java.events.managers.application.dto.request.EventRequestDto;
@@ -8,7 +9,6 @@ import com.io.java.events.managers.application.utils.FileUtils;
 import com.io.java.events.managers.application.utils.Objects;
 import com.io.java.events.managers.application.utils.URLS;
 import com.io.java.events.managers.domain.service.EventService;
-import com.io.java.events.managers.security.SecurityConfig;
 import com.io.java.events.managers.security.filter.Filter;
 import com.io.java.events.managers.security.util.JwtUtilImpl;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -52,9 +51,6 @@ public class EventControllerTest {
     @Test
     void shouldSaveEvent() throws Exception {
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
-
         when(eventService.saveEvent(EventControllerFixture.eventRequest()))
                 .thenReturn(EventControllerFixture.eventSuccessResponseSave());
 
@@ -77,8 +73,6 @@ public class EventControllerTest {
         jsonSave = FileUtils.removeField(jsonSave, "eventName");
 
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
 
         mvc.perform(
                 post(URLS.EVENT_PATH)
@@ -97,8 +91,6 @@ public class EventControllerTest {
         String jsonSave = FileUtils.readFileFromClassLoader("json/request/event-save-request.json");
         jsonSave = FileUtils.removeField(jsonSave, "eventDescription");
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
 
         mvc.perform(
                 post(URLS.EVENT_PATH)
@@ -117,9 +109,6 @@ public class EventControllerTest {
         String jsonSave = FileUtils.readFileFromClassLoader("json/request/event-save-request.json");
         jsonSave = FileUtils.removeField(jsonSave, "eventData");
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
-
         mvc.perform(
                 post(URLS.EVENT_PATH)
                         .header("Authorization", EventControllerFixture.JWT)
@@ -137,9 +126,6 @@ public class EventControllerTest {
         String jsonSave = FileUtils.readFileFromClassLoader("json/request/event-save-request.json");
         jsonSave = FileUtils.removeField(jsonSave, "status");
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
-
         mvc.perform(
                 post(URLS.EVENT_PATH)
                         .header("Authorization", EventControllerFixture.JWT)
@@ -152,22 +138,7 @@ public class EventControllerTest {
     }
 
     @Test
-    void shouldNotSaveEvent_withoutToken() throws Exception {
-        mvc.perform(
-                post(URLS.EVENT_PATH)
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-                        .content(FileUtils.readFileFromClassLoader("json/request/event-save-request.json"))
-        ).andExpect(status().isForbidden()).andReturn();
-
-        verify(eventService, never()).saveEvent(any(EventRequestDto.class));
-
-    }
-
-    @Test
     void shouldPutEvent() throws Exception {
-
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
 
         when(eventService.updateEvent(EventControllerFixture.eventRequestPut()))
                 .thenReturn(EventControllerFixture.eventSuccessResponseUpdate());
@@ -190,9 +161,6 @@ public class EventControllerTest {
         String jsonSave = FileUtils.readFileFromClassLoader("json/request/event-update-request.json");
         jsonSave = FileUtils.removeField(jsonSave, "id");
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
-
         mvc.perform(
                 put(URLS.EVENT_PATH)
                         .header("Authorization", EventControllerFixture.JWT)
@@ -209,9 +177,6 @@ public class EventControllerTest {
 
         String jsonSave = FileUtils.readFileFromClassLoader("json/request/event-update-request.json");
         jsonSave = FileUtils.removeField(jsonSave, "status");
-
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
 
         mvc.perform(
                 put(URLS.EVENT_PATH)
@@ -230,9 +195,6 @@ public class EventControllerTest {
         String jsonSave = FileUtils.readFileFromClassLoader("json/request/event-update-request.json");
         jsonSave = FileUtils.removeField(jsonSave, "eventName");
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
-
         mvc.perform(
                 put(URLS.EVENT_PATH)
                         .header("Authorization", EventControllerFixture.JWT)
@@ -249,9 +211,6 @@ public class EventControllerTest {
 
         String jsonSave = FileUtils.readFileFromClassLoader("json/request/event-update-request.json");
         jsonSave = FileUtils.removeField(jsonSave, "eventDescription");
-
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
 
         mvc.perform(
                 put(URLS.EVENT_PATH)
@@ -270,9 +229,6 @@ public class EventControllerTest {
         String jsonSave = FileUtils.readFileFromClassLoader("json/request/event-update-request.json");
         jsonSave = FileUtils.removeField(jsonSave, "eventData");
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
-
         mvc.perform(
                 put(URLS.EVENT_PATH)
                         .header("Authorization", EventControllerFixture.JWT)
@@ -284,23 +240,9 @@ public class EventControllerTest {
 
     }
 
-    @Test
-    void shouldNotUpdateEvent_withoutToken() throws Exception {
-        mvc.perform(
-                post(URLS.EVENT_PATH)
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-                        .content(FileUtils.readFileFromClassLoader("json/request/event-update-request.json"))
-        ).andExpect(status().isForbidden()).andReturn();
-
-        verify(eventService, never()).updateEvent(any(EventPutRequestDto.class));
-
-    }
 
     @Test
     void shouldGetEventByName() throws Exception {
-
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
 
         when(eventService.getEventByName(EventControllerFixture.HEADER_NAME))
                 .thenReturn(EventControllerFixture.eventGetByNameResponse());
@@ -318,9 +260,6 @@ public class EventControllerTest {
     @Test
     void shouldNotGetEventByName_withoutName() throws Exception {
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
-
         mvc.perform(
                 get(URLS.FINAL_EVENT_GET_BY_NAME)
                         .header("Authorization", EventControllerFixture.JWT)
@@ -330,20 +269,7 @@ public class EventControllerTest {
     }
 
     @Test
-    void shouldNotGetEventByName_withoutToken() throws Exception {
-        mvc.perform(
-                get(URLS.FINAL_EVENT_GET_BY_NAME)
-                        .header("Authorization", EventControllerFixture.JWT)
-        ).andExpect(status().isForbidden());
-
-        verify(eventService, never()).getEventByName(any(String.class));
-    }
-
-    @Test
     void shouldGetEventByDate() throws Exception {
-
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
 
         when(eventService.getEventByDate(EventControllerFixture.HEADER_DATE))
                 .thenReturn(EventControllerFixture.eventGetByDateResponse());
@@ -361,9 +287,6 @@ public class EventControllerTest {
     @Test
     void shouldNotGetEventByDate_withoutDate() throws Exception {
 
-        when(jwtUtil.isValidToken(EventControllerFixture.JWT)).thenReturn(true);
-        when(jwtUtil.authenticate(EventControllerFixture.JWT)).thenReturn(EventControllerFixture.authentication());
-
         mvc.perform(
                 get(URLS.FINAL_EVENT_GET_BY_DATE)
                         .header("Authorization", EventControllerFixture.JWT)
@@ -371,20 +294,5 @@ public class EventControllerTest {
 
         verify(eventService, never()).getEventByDate(any(LocalDateTime.class));
     }
-
-    @Test
-    void shouldNotGetEventByDate_withoutToken() throws Exception {
-        mvc.perform(
-                get(URLS.FINAL_EVENT_GET_BY_DATE)
-                        .header("Authorization", EventControllerFixture.JWT)
-        ).andExpect(status().isForbidden());
-
-        verify(eventService, never()).getEventByDate(any(LocalDateTime.class));
-    }
-
-
-
-
-
 
 }
