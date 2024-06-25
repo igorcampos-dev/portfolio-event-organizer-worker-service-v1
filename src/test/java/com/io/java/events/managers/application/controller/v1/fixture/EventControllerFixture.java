@@ -1,6 +1,5 @@
 package com.io.java.events.managers.application.controller.v1.fixture;
 
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
 import com.io.java.events.managers.application.dto.request.EventRequestDto;
 import com.io.java.events.managers.application.dto.request.Status;
