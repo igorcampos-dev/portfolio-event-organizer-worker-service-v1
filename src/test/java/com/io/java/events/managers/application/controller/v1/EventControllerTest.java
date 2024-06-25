@@ -1,7 +1,7 @@
 package com.io.java.events.managers.application.controller.v1;
 
 import com.io.java.events.managers.application.config.TestConfig;
-import com.io.java.events.managers.application.config.SecurityConfig;
+import com.io.java.events.managers.application.config.SecurityConfigTest;
 import com.io.java.events.managers.application.controller.v1.fixture.EventControllerFixture;
 import com.io.java.events.managers.application.dto.request.EventPutRequestDto;
 import com.io.java.events.managers.application.dto.request.EventRequestDto;
@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(EventController.class)
-@Import({EventController.class, SecurityConfig.class, Filter.class})
+@Import({EventController.class, SecurityConfigTest.class, Filter.class})
 @ContextConfiguration(classes = TestConfig.class)
 public class EventControllerTest {
 

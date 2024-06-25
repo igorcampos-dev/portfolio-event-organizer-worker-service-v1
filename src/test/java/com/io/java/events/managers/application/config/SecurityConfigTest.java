@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @RequiredArgsConstructor
 @SuppressWarnings("unused")
-public class SecurityConfig {
+public class SecurityConfigTest {
 
     private final JwtUtil jwtUtil;
 
