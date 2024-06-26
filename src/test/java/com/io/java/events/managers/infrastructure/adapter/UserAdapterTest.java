@@ -3,7 +3,7 @@ package com.io.java.events.managers.infrastructure.adapter;
 import com.io.java.events.managers.application.dto.request.UserRequestDto;
 import com.io.java.events.managers.application.dto.response.UserResponse;
 import com.io.java.events.managers.infrastructure.adapter.fixture.UserAdapterFixture;
-import com.io.java.events.managers.security.util.JwtUtilImpl;
+import com.io.java.events.managers.security.util.JwtImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@ public class UserAdapterTest {
     private AuthenticationManager authenticationManager;
 
     @Mock
-    private JwtUtilImpl jwtUtil;
+    private JwtImpl jwtUtil;
 
     @InjectMocks
     private UserAdapter userAdapter;

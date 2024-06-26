@@ -10,7 +10,7 @@ import com.io.java.events.managers.application.utils.Objects;
 import com.io.java.events.managers.application.utils.URLS;
 import com.io.java.events.managers.domain.service.EventService;
 import com.io.java.events.managers.security.filter.Filter;
-import com.io.java.events.managers.security.util.JwtUtilImpl;
+import com.io.java.events.managers.security.util.JwtImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -42,7 +42,7 @@ public class EventControllerTest {
 
     @MockBean
     @SuppressWarnings("unused")
-    private JwtUtilImpl jwtUtil;
+    private JwtImpl jwtUtil;
 
     @MockBean
     private Objects obj;
