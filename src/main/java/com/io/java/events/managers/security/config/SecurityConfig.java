@@ -1,4 +1,4 @@
-package com.io.java.events.managers.security;
+package com.io.java.events.managers.security.config;
 
 import com.io.java.events.managers.application.utils.URLS;
 import com.io.java.events.managers.security.filter.Filter;

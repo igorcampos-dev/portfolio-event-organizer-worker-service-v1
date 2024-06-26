@@ -23,7 +23,6 @@
 		<lombok.version>1.18.32</lombok.version>
 		<auth0.version>4.4.0</auth0.version>
 		<springdoc-openapi.version>2.5.0</springdoc-openapi.version>
-		<auth0.version>4.4.0</auth0.version>
 		<mysql.version>8.3.0</mysql.version>
 		<caffeine.version>3.1.8</caffeine.version>
 		<mapstruct.version>1.6.0.Beta1</mapstruct.version>
@@ -54,12 +53,6 @@
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>${auth0.version}</version>
 		</dependency>
 
 		<dependency>
@@ -102,6 +95,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>${spring.boot.base.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 			<version>${spring.boot.base.version}</version>
 		</dependency>
 
