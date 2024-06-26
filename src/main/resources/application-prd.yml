@@ -3,6 +3,12 @@ server:
   servlet:
     context-path: ${SERVER_SERVLET_CONTEXT_PATH}
 
+jwt:
+  public:
+    key: ${JWT_PUBLIC_KEY}
+  private:
+    key: ${JWT_PRIVATE_KEY}
+
 spring:
 
   datasource:
