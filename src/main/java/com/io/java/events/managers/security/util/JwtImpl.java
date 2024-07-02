@@ -82,7 +82,7 @@ public class JwtImpl implements JwtUtil {
     }
 
     private String pureToken(String jwt) {
-        return jwt.trim().replace(" ", "");
+        return jwt.trim().replace("Bearer", "");
     }
 
     @Scheduled(fixedRate = 1800000) //30 minutes
