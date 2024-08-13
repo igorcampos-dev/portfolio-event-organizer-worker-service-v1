@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "8389baa3-971e-4e22-ad39-9acc635d1360",
+		"name": "events.manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27290769"
+	},
+	"item": [
+		{
+			"name": "LOGIN LOCALHOST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=C1C72560FAF90BD05C829610920562E8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"rh.example@gmail.com\",\"password\": \"rhExample\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tech-sprint-solutions/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tech-sprint-solutions",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SAVE EVENT LOCALHOST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=3F26D9D081998A4C9116E554368DF338; JSESSIONID=02BFB81B4EC9DE75C80EF8AAA61C11C3; JSESSIONID=9BBC687181840EEABDFC636AB5CE0186",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR_TOKEN_HERE"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"eventName\": \"Reunião com os acionistas 2234\",\"eventDescription\": \"Reunião que haverá,tendo a presença dos acionistas, a reunião será na sede da empresa e terá a finalidade de discutir os novos produtos da empresa\",\"eventData\": \"2024-04-27T15:30\",\"status\": \"FINALIZED\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tech-sprint-solutions/v1/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tech-sprint-solutions",
+						"v1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET EVENT BY DATE LOCALHOST",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "date",
+						"value": "2024-04-27T15:30"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR_TOKEN_HERE"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=9BBC687181840EEABDFC636AB5CE0186",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/tech-sprint-solutions/v1/events/date",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tech-sprint-solutions",
+						"v1",
+						"events",
+						"date"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET EVENT BY NAME LOCALHOST",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "name",
+						"value": "Reunião com os acionistas 2234"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR_TOKEN_HERE"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=9BBC687181840EEABDFC636AB5CE0186",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/tech-sprint-solutions/v1/events/name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tech-sprint-solutions",
+						"v1",
+						"events",
+						"name"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT EVENT LOCALHOST",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=3F26D9D081998A4C9116E554368DF338; JSESSIONID=9BBC687181840EEABDFC636AB5CE0186",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR_TOKEN_HERE"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"fc8aabdb-9e20-43cb-8819-aaf30aac212d\",\"eventName\": \"Reunião com os acionistas\",\"eventDescription\": \"Reunião que haverá,tendo a presença dos acionistas, a reunião será na sede da empresa e terá a finalidade de discutir os novos produtos da empresa\",\"eventData\": \"2024-04-27T15:30\",\"status\": \"FINALIZED\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tech-sprint-solutions/v1/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tech-sprint-solutions",
+						"v1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
