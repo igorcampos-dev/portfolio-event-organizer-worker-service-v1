@@ -23,7 +23,6 @@ public class JwtImpl implements JwtUtil {
 
     private static final long EXPIRES_IN = 24L * 60L * 60L;
     private static final String ISSUER = "api-auth";
-
     private final JwtEncoder jwtEncoder;
     private final JwtDecoder jwtDecoder;
     private static final ConcurrentHashMap<String, Jwt> JWT_CACHE = new ConcurrentHashMap<>();
@@ -32,13 +31,8 @@ public class JwtImpl implements JwtUtil {
     public void authenticate(String jwt) {
         if (this.validToken(jwt)) {
             var decodedJwt = JWT_CACHE.computeIfAbsent(jwt, key -> jwtDecoder.decode(this.pureToken(key)));
-
             List<String> roles = decodedJwt.getClaim("roles");
-
-            List<SimpleGrantedAuthority> authorities = roles.stream()
-                    .map(SimpleGrantedAuthority::new)
-                    .collect(Collectors.toList());
-
+            List<SimpleGrantedAuthority> authorities = this.rolesToGrantedAuthority(roles);
             var user = new UsernamePasswordAuthenticationToken(decodedJwt.getClaim("username"), null, authorities);
             SecurityContextHolder.getContext().setAuthentication(user);
         }
@@ -46,19 +40,8 @@ public class JwtImpl implements JwtUtil {
 
     @Override
     public String encode(UserDetails userDetails) {
-        var scopes = userDetails.getAuthorities()
-                .stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
-
-        var claims = JwtClaimsSet.builder()
-                .issuer(ISSUER)
-                .issuedAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(EXPIRES_IN))
-                .claim("username", userDetails.getUsername())
-                .claim("roles", scopes)
-                .build();
-
+        var scopes = userDetailsToGrantedAuthority(userDetails);
+        var claims = this.buildClaims(scopes, userDetails);
         var token = JwtEncoderParameters.from(claims);
         return jwtEncoder.encode(token).getTokenValue();
     }
@@ -85,6 +68,30 @@ public class JwtImpl implements JwtUtil {
         return jwt.trim().replace("Bearer", "");
     }
 
+    private JwtClaimsSet buildClaims(List<String> scopes, UserDetails userDetails) {
+        return JwtClaimsSet.builder()
+                .issuer(ISSUER)
+                .issuedAt(Instant.now())
+                .expiresAt(Instant.now().plusSeconds(EXPIRES_IN))
+                .claim("username", userDetails.getUsername())
+                .claim("roles", scopes)
+                .build();
+    }
+
+    private List<String> userDetailsToGrantedAuthority(UserDetails userDetails) {
+        return userDetails.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+    }
+
+    private List<SimpleGrantedAuthority> rolesToGrantedAuthority(List<String> roles){
+        return roles.stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+    }
+
+
     @Scheduled(fixedRate = 1800000) //30 minutes
     @SuppressWarnings("unused")
     public void clearJwtCache() {
@@ -92,4 +99,5 @@ public class JwtImpl implements JwtUtil {
         JWT_CACHE.clear();
         log.info("Limpo!");
     }
+
 }
