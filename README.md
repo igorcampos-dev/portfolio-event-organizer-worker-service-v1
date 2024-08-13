@@ -87,10 +87,6 @@ Siga as etapas abaixo para implantar o projeto no Docker:
 
 ### `POST /tech-sprint-solutions/v1/auth/login`
 
-```bash
-curl --location 'http://localhost:80/tech-sprint-solutions/v1/auth/login' --header 'Content-Type: application/json' --header 'Cookie: JSESSIONID=C1C72560FAF90BD05C829610920562E8' --data-raw '{"email": "rh.example@gmail.com","password": "rhExample"}'
-```
-
 > Esta rota é utilizada para efetuar o login do funcionário. A existência do funcionário na empresa é verificada com base
 no seu email e senha.
 
@@ -98,19 +94,11 @@ no seu email e senha.
 
 ### `POST /tech-sprint-solutions/v1/events`
 
-```bash
-curl --location 'http://localhost:80/tech-sprint-solutions/v1/events' --header 'Content-Type: application/json' --header 'Cookie: JSESSIONID=3F26D9D081998A4C9116E554368DF338; JSESSIONID=02BFB81B4EC9DE75C80EF8AAA61C11C3; JSESSIONID=9BBC687181840EEABDFC636AB5CE0186' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYXV0aCIsInVzZXJuYW1lIjoicmguZXhhbXBsZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1JIIl0sImV4cCI6MTcxNDM1Mjk5Nn0.tn1yie4FsRFArMfN3l47RrrwLY1ZoqJq-JxF8FAq8tQ' --data '{"eventName": "Reunião com os acionistas 2234","eventDescription": "Reunião que haverá,tendo a presença dos acionistas, a reunião será na sede da empresa e terá a finalidade de discutir os novos produtos da empresa","eventData": "2024-04-27T15:30","status": "FINALIZED"}'
-```
-
 > Nesta rota, Criamos um novo evento,tendo como obrigatórios os campos: eventName, eventDescription, eventData e status.
 
 ---
 
 ### `GET /tech-sprint-solutions/v1/events/date`
-
-```bash
-curl --location 'http://localhost:80/tech-sprint-solutions/v1/events/date' --header 'date: 2024-04-27T15:30' --header 'Authorization: Bearer SEU_TOKEN_AQUI' --header 'Cookie: JSESSIONID=9BBC687181840EEABDFC636AB5CE0186'
-```
 
 > Nessa rota,passamos pelo header um campo chamado: "date",nele, buscamos todos os eventos com base na data fornecida
 
@@ -118,18 +106,10 @@ curl --location 'http://localhost:80/tech-sprint-solutions/v1/events/date' --hea
 
 ### `GET /tech-sprint-solutions/v1/events/name`
 
-```bash
-curl --location 'http://localhost:80/tech-sprint-solutions/v1/events/name' --header 'name: Reunião com os acionistas' --header 'Authorization: Bearer SEU_TOKEN_AQUI' --header 'Cookie: JSESSIONID=9BBC687181840EEABDFC636AB5CE0186'
-```
-
 > Nessa rota,passamos pelo header um campo chamado: "nome",nele, buscamos o evento com base no nome fornecido.
 
 ---
 
 ### `PUT /tech-sprint-solutions/v1/events`
-
-```bash
-curl --location --request PUT 'http://localhost:80/tech-sprint-solutions/v1/events' --header 'Content-Type: application/json' --header 'Cookie: JSESSIONID=3F26D9D081998A4C9116E554368DF338; JSESSIONID=9BBC687181840EEABDFC636AB5CE0186' --header 'Authorization: Bearer SEU_TOKEN_AQUI' --data '{"id": "4ca79dd1-251e-4673-bf26-5bbbe356de56","eventName": "Reunião com os acionistas","eventDescription": "Reunião que haverá,tendo a presença dos acionistas, a reunião será na sede da empresa e terá a finalidade de discutir os novos produtos da empresa","eventData": "2024-04-27T15:30","status": "FINALIZED"}'
-```
 
 > Nessa rota,atualizamos um evento com base no body passado, tendo como obrigatórios os campos: eventName, eventDescription, eventData e status.

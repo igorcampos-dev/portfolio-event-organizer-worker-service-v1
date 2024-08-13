@@ -30,9 +30,10 @@ public class TokenConfig {
 
     @Bean
     public RSAPublicKey publicKey() throws Exception {
-        String publicKeyPEMFormatted = publicKeyPEM.replace("-----BEGIN PUBLIC KEY-----", "")
-                .replace("-----END PUBLIC KEY-----", "")
-                .replaceAll("\\s", "");
+        String publicKeyPEMFormatted =
+                publicKeyPEM.replace("-----BEGIN PUBLIC KEY-----", "")
+                            .replace("-----END PUBLIC KEY-----", "")
+                            .replaceAll("\\s", "");
         byte[] keyBytes = Base64.getDecoder().decode(publicKeyPEMFormatted);
         X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
@@ -41,9 +42,10 @@ public class TokenConfig {
 
     @Bean
     public RSAPrivateKey privateKey() throws Exception {
-        String privateKeyPEMFormatted = privateKeyPEM.replace("-----BEGIN PRIVATE KEY-----", "")
-                .replace("-----END PRIVATE KEY-----", "")
-                .replaceAll("\\s", "");
+        String privateKeyPEMFormatted =
+                privateKeyPEM.replace("-----BEGIN PRIVATE KEY-----", "")
+                             .replace("-----END PRIVATE KEY-----", "")
+                             .replaceAll("\\s", "");
         byte[] keyBytes = Base64.getDecoder().decode(privateKeyPEMFormatted);
         PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
