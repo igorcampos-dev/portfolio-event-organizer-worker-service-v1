@@ -25,7 +25,6 @@ public abstract class EventOperationMapper {
     @Mapping(target = "status", source = "status")
     public abstract List<EventsResponse> toResponseList(List<EventEntity> entityList);
 
-
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "eventName")
     @Mapping(target = "date", source = "eventData")
@@ -38,7 +37,6 @@ public abstract class EventOperationMapper {
     @Mapping(target = "description", source = "eventDescription")
     @Mapping(target = "status", source = "status")
     public abstract EventEntity toEntity(EventRequestDto eventRequestDto);
-
 
     public List<EventsResponse> toResponseListOrElseThrow(List<EventEntity> entityList) {
         if (entityList == null) {

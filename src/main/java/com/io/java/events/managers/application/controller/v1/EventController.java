@@ -93,4 +93,5 @@ public class EventController {
         log.info("processo de busca de evento/eventos por data finalizado com sucesso");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
+
 }

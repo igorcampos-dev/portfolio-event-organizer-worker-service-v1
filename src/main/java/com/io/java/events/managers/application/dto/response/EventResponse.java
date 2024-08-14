@@ -39,4 +39,5 @@ public class EventResponse {
                 .message("Evento atualizado com sucesso.")
                 .build();
     }
+
 }

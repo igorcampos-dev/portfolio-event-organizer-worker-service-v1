@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@SuppressWarnings("unused")
 public class LoginUserComponent implements UserDetailsService {
 
     private final UserRepository userRepository;
@@ -22,4 +23,5 @@ public class LoginUserComponent implements UserDetailsService {
         var user = this.userRepository.findByEmailOrElseThrow(username);
         return new User(user.getEmail(), user.getPassword() , user.getAuthorities());
     }
+
 }

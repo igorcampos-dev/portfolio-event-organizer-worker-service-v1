@@ -48,4 +48,5 @@ public interface EventRepository extends JpaRepository<EventEntity, String> {
         entity.setDescription(eventEntity.getDescription());
         this.save(entity);
     }
+
 }
