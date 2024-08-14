@@ -26,7 +26,7 @@ import java.util.List;
 public class UsersEntity implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
     @Comment("Id único do usuário")
     private Long id;

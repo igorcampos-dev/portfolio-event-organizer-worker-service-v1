@@ -12,4 +12,5 @@ public interface UserRepository extends JpaRepository<UsersEntity, Long> {
     default UsersEntity findByEmailOrElseThrow(String email){
         return this.findByEmail(email).orElseThrow( () -> new NullPointerException("User not found with email: " +  email));
     }
+
 }

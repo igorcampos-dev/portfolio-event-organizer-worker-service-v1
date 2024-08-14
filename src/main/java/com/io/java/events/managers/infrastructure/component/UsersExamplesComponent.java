@@ -12,12 +12,13 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
+@SuppressWarnings("unused")
 public class UsersExamplesComponent implements CommandLineRunner {
 
     private final UserRepository userRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
        this.saveUser(user());
        this.saveUser(userAdmin());
        this.saveUser(userRh());
