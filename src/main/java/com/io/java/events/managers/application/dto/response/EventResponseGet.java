@@ -15,10 +15,10 @@ import java.util.List;
 public class EventResponseGet {
 
     @Schema(description = "Data dos eventos")
-    LocalDateTime date;
+    private LocalDateTime date;
 
     @Schema(description = "Lista de eventos que vão acontecer nesta data")
-    List<EventsResponse> events;
+    private List<EventsResponse> events;
 
     public static EventResponseGet buildClass(LocalDateTime date, List<EventsResponse> events){
         return EventResponseGet.builder()
@@ -26,4 +26,5 @@ public class EventResponseGet {
                 .events(events)
                 .build();
     }
+
 }
